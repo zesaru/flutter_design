@@ -9,33 +9,80 @@ class BasicoPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: <Widget>[
-          Image(
-            image: NetworkImage(
-                'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?cs=srgb&dl=adventure-calm-clouds-414171.jpg&fm=jpg'),
+          _crearImagen(),
+          _crearTitulo(),
+          _crearAcciones(),
+          _crearTexto(),
+        ],
+      ),
+    );
+  }
+
+  _crearImagen() {
+    return Image(
+      image: NetworkImage(
+          'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?cs=srgb&dl=adventure-calm-clouds-414171.jpg&fm=jpg'),
+    );
+  }
+
+  _crearTitulo() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 27.0, vertical: 20.0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text('Lago en las montañas', style: estiloTitulo),
+                SizedBox(height: 5.0),
+                Text('Hermoso paisaje', style: estiloSubtitulo)
+              ],
+            ),
           ),
-          Row(
-            children: <Widget>[
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Lago en las montañas', style: estiloTitulo),
-                    SizedBox(height: 7.0),
-                    Text('Hermoso paisaje', style: estiloSubtitulo)
-                  ],
-                ),
-              ),
-              Icon(
-                Icons.star,
-                color: Colors.red,
-              ),
-              Text(
-                '41',
-                style: TextStyle(fontSize: 20),
-              )
-            ],
+          Icon(
+            Icons.star,
+            color: Colors.red,
+          ),
+          Text(
+            '41',
+            style: TextStyle(fontSize: 20),
           )
         ],
+      ),
+    );
+  }
+
+  _crearAcciones() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        _accion(Icons.call, 'CALL'),
+        _accion(Icons.near_me, 'ROUTE'),
+        _accion(Icons.share, 'SHARE'),
+      ],
+    );
+  }
+
+  Widget _accion(IconData icon, String texto) {
+    return Column(
+      children: <Widget>[
+        Icon(icon, color: Colors.blue, size: 35.0),
+        SizedBox(height: 5.0),
+        Text(
+          texto,
+          style: TextStyle(color: Colors.blue, fontSize: 15.0),
+        )
+      ],
+    );
+  }
+
+  Widget _crearTexto() {
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+      child: Text(
+        'Consequat do fugiat aliquip nisi ipsum ullamco veniam Lorem esse duis. Nulla magna nisi commodo tempor tempor elit qui consequat Lorem occaecat ipsum. Eiusmod amet commodo magna aute fugiat qui est exercitation elit occaecat. Sunt aliqua esse est sunt amet qui voluptate consectetur minim irure proident. Velit minim esse fugiat est aliquip adipisicing aliqua officia id ex do.',
+        textAlign: TextAlign.justify,
       ),
     );
   }
