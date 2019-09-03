@@ -7,48 +7,60 @@ class BasicoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          _crearImagen(),
-          _crearTitulo(),
-          _crearAcciones(),
-          _crearTexto(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            _crearImagen(),
+            _crearTitulo(),
+            _crearAcciones(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+          ],
+        ),
       ),
     );
   }
 
   _crearImagen() {
-    return Image(
-      image: NetworkImage(
-          'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?cs=srgb&dl=adventure-calm-clouds-414171.jpg&fm=jpg'),
+    return Container(
+      width: double.infinity,
+      child: Image(
+        image: NetworkImage(
+            'https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?cs=srgb&dl=adventure-calm-clouds-414171.jpg&fm=jpg'),
+        height: 180.0,
+        fit: BoxFit.cover,
+      ),
     );
   }
 
   _crearTitulo() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 27.0, vertical: 20.0),
-      child: Row(
-        children: <Widget>[
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text('Lago en las montañas', style: estiloTitulo),
-                SizedBox(height: 5.0),
-                Text('Hermoso paisaje', style: estiloSubtitulo)
-              ],
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 25.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('Lago en las montañas', style: estiloTitulo),
+                  SizedBox(height: 5.0),
+                  Text('Hermoso paisaje', style: estiloSubtitulo)
+                ],
+              ),
             ),
-          ),
-          Icon(
-            Icons.star,
-            color: Colors.red,
-          ),
-          Text(
-            '41',
-            style: TextStyle(fontSize: 20),
-          )
-        ],
+            Icon(
+              Icons.star,
+              color: Colors.red,
+            ),
+            Text(
+              '41',
+              style: TextStyle(fontSize: 20),
+            )
+          ],
+        ),
       ),
     );
   }
